@@ -9,11 +9,11 @@ import App from './App.tsx';
 
 import './index.css';
 
-registerService(openMeteoService)
-registerService(weatherApiService)
+registerService(openMeteoService);
+registerService(weatherApiService);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);

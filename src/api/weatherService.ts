@@ -1,6 +1,6 @@
-import type { WeatherData, ServiceConfig } from '../types/types'
+import type { WeatherData, ServiceConfig } from '../types/types';
 
 export interface WeatherService {
-  config: ServiceConfig
-  fetchWeather(location: string): Promise<WeatherData>
+  config: ServiceConfig;
+  fetchWeather(location: string): Promise<WeatherData>;
 }

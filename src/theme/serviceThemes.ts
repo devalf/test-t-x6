@@ -1,11 +1,11 @@
 export interface ServiceTheme {
-  bg: string
-  cardBg: string
-  accent: string
-  border: string
-  button: string
-  buttonActive: string
-  label: string
+  bg: string;
+  cardBg: string;
+  accent: string;
+  border: string;
+  button: string;
+  buttonActive: string;
+  label: string;
 }
 
 export const serviceThemes: Record<string, ServiceTheme> = {
@@ -27,8 +27,8 @@ export const serviceThemes: Record<string, ServiceTheme> = {
     buttonActive: 'bg-sky-600 ring-2 ring-sky-400',
     label: 'Powered by WeatherAPI',
   },
-}
+};
 
 export function getTheme(serviceId: string): ServiceTheme {
-  return serviceThemes[serviceId] ?? serviceThemes['openmeteo']
+  return serviceThemes[serviceId] ?? serviceThemes['openmeteo'];
 }

@@ -1,20 +1,20 @@
-import type { WeatherData } from '../../types/types'
-import type { WeatherService } from '../weatherService'
+import type { WeatherData } from '../../types/types';
+import type { WeatherService } from '../weatherService';
 
 interface WeatherApiResponse {
   location: {
-    name: string
-  }
+    name: string;
+  };
   current: {
-    temp_c: number
-    feelslike_c: number
-    humidity: number
+    temp_c: number;
+    feelslike_c: number;
+    humidity: number;
     condition: {
-      text: string
-      icon: string
-    }
-    wind_kph: number
-  }
+      text: string;
+      icon: string;
+    };
+    wind_kph: number;
+  };
 }
 
 export const weatherApiService: WeatherService = {
@@ -25,16 +25,16 @@ export const weatherApiService: WeatherService = {
   },
 
   async fetchWeather(location: string): Promise<WeatherData> {
-    const apiKey = import.meta.env.VITE_WEATHERAPI_API_KEY
-    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(location)}`
+    const apiKey = import.meta.env.VITE_WEATHERAPI_API_KEY;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(location)}`;
 
-    const response = await fetch(url)
+    const response = await fetch(url);
     if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error?.message ?? 'Failed to fetch weather data')
+      const error = await response.json();
+      throw new Error(error.error?.message ?? 'Failed to fetch weather data');
     }
 
-    const data: WeatherApiResponse = await response.json()
+    const data: WeatherApiResponse = await response.json();
 
     return {
       location: data.location.name,
@@ -45,6 +45,6 @@ export const weatherApiService: WeatherService = {
       icon: `https:${data.current.condition.icon}`,
       windSpeed: Math.round(data.current.wind_kph * 10) / 10,
       provider: 'WeatherAPI',
-    }
+    };
   },
-}
+};

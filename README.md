@@ -1,6 +1,6 @@
 # Weather App (Technical Assignment)
 
-A multi-provider weather application built with a modular, strategy-based architecture. 
+A multi-provider weather application built with a modular, strategy-based architecture.
 Users can look up current weather by location and seamlessly switch between providers.
 This is a demo app built with a minimalist approach, using modern AI coding tools.
 

@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw'
+import { http, HttpResponse } from 'msw';
 
 export const mockOpenMeteoGeocodingResponse = {
   results: [
@@ -8,7 +8,7 @@ export const mockOpenMeteoGeocodingResponse = {
       longitude: -0.1257,
     },
   ],
-}
+};
 
 export const mockOpenMeteoWeatherResponse = {
   current: {
@@ -18,7 +18,7 @@ export const mockOpenMeteoWeatherResponse = {
     weather_code: 2,
     wind_speed_10m: 12.6,
   },
-}
+};
 
 export const mockWeatherApiResponse = {
   location: {
@@ -34,31 +34,31 @@ export const mockWeatherApiResponse = {
     },
     wind_kph: 12.0,
   },
-}
+};
 
 export const handlers = [
   http.get('https://geocoding-api.open-meteo.com/v1/search', ({ request }) => {
-    const url = new URL(request.url)
-    const name = url.searchParams.get('name')
+    const url = new URL(request.url);
+    const name = url.searchParams.get('name');
     if (name === 'InvalidCity999') {
-      return HttpResponse.json({ results: [] })
+      return HttpResponse.json({ results: [] });
     }
-    return HttpResponse.json(mockOpenMeteoGeocodingResponse)
+    return HttpResponse.json(mockOpenMeteoGeocodingResponse);
   }),
 
   http.get('https://api.open-meteo.com/v1/forecast', () => {
-    return HttpResponse.json(mockOpenMeteoWeatherResponse)
+    return HttpResponse.json(mockOpenMeteoWeatherResponse);
   }),
 
   http.get('https://api.weatherapi.com/v1/current.json', ({ request }) => {
-    const url = new URL(request.url)
-    const q = url.searchParams.get('q')
+    const url = new URL(request.url);
+    const q = url.searchParams.get('q');
     if (q === 'InvalidCity999') {
       return HttpResponse.json(
         { error: { code: 1006, message: 'No matching location found.' } },
         { status: 400 },
-      )
+      );
     }
-    return HttpResponse.json(mockWeatherApiResponse)
+    return HttpResponse.json(mockWeatherApiResponse);
   }),
-]
+];

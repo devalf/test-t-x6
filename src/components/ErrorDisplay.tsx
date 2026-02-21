@@ -1,14 +1,14 @@
-import { useWeatherStore } from '../store/weatherStore'
-import { getTheme } from '../theme/serviceThemes'
+import { useWeatherStore } from '../store/weatherStore';
+import { getTheme } from '../theme/serviceThemes';
 
 interface ErrorDisplayProps {
-  message: string
-  onRetry: () => void
+  message: string;
+  onRetry: () => void;
 }
 
 export function ErrorDisplay({ message, onRetry }: ErrorDisplayProps) {
-  const { selectedServiceId } = useWeatherStore()
-  const theme = getTheme(selectedServiceId)
+  const { selectedServiceId } = useWeatherStore();
+  const theme = getTheme(selectedServiceId);
 
   return (
     <div className="w-full max-w-md mx-auto rounded-xl border border-red-200 bg-red-50 p-6 text-center">
@@ -20,5 +20,5 @@ export function ErrorDisplay({ message, onRetry }: ErrorDisplayProps) {
         Try again
       </button>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { openMeteoService } from '../../api/services/openMeteo'
+import { describe, it, expect } from 'vitest';
+import { openMeteoService } from '../../api/services/openMeteo';
 
 describe('Open-Meteo Service', () => {
   it('has correct config', () => {
@@ -7,11 +7,11 @@ describe('Open-Meteo Service', () => {
       id: 'openmeteo',
       displayName: 'Open-Meteo',
       themeKey: 'openmeteo',
-    })
-  })
+    });
+  });
 
   it('fetches and maps weather data correctly', async () => {
-    const data = await openMeteoService.fetchWeather('London')
+    const data = await openMeteoService.fetchWeather('London');
 
     expect(data).toEqual({
       location: 'London',
@@ -22,12 +22,12 @@ describe('Open-Meteo Service', () => {
       icon: expect.stringContaining('data:image/svg+xml'),
       windSpeed: 12.6,
       provider: 'Open-Meteo',
-    })
-  })
+    });
+  });
 
   it('throws on location not found', async () => {
-    await expect(
-      openMeteoService.fetchWeather('InvalidCity999'),
-    ).rejects.toThrow('Location not found')
-  })
-})
+    await expect(openMeteoService.fetchWeather('InvalidCity999')).rejects.toThrow(
+      'Location not found',
+    );
+  });
+});

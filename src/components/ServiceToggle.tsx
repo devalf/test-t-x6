@@ -1,18 +1,18 @@
-import { useWeatherStore } from '../store/weatherStore'
-import { getAllServices } from '../api/registry'
-import { getTheme } from '../theme/serviceThemes'
+import { useWeatherStore } from '../store/weatherStore';
+import { getAllServices } from '../api/registry';
+import { getTheme } from '../theme/serviceThemes';
 
 export function ServiceToggle() {
-  const { selectedServiceId, setSelectedServiceId } = useWeatherStore()
-  const services = getAllServices()
-  const theme = getTheme(selectedServiceId)
+  const { selectedServiceId, setSelectedServiceId } = useWeatherStore();
+  const services = getAllServices();
+  const theme = getTheme(selectedServiceId);
 
-  if (services.length < 2) return null
+  if (services.length < 2) return null;
 
   return (
     <div className="flex gap-2 justify-center" role="radiogroup" aria-label="Weather service">
       {services.map((service) => {
-        const isActive = service.config.id === selectedServiceId
+        const isActive = service.config.id === selectedServiceId;
         return (
           <button
             key={service.config.id}
@@ -25,8 +25,8 @@ export function ServiceToggle() {
           >
             {service.config.displayName}
           </button>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

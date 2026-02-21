@@ -1,30 +1,30 @@
-import { useState } from 'react'
-import { locationSchema } from '../validation/locationSchema'
-import { useWeatherStore } from '../store/weatherStore'
-import { getTheme } from '../theme/serviceThemes'
+import { useState } from 'react';
+import { locationSchema } from '../validation/locationSchema';
+import { useWeatherStore } from '../store/weatherStore';
+import { getTheme } from '../theme/serviceThemes';
 
 export function LocationInput() {
-  const { selectedServiceId, setLocation } = useWeatherStore()
-  const theme = getTheme(selectedServiceId)
-  const [input, setInput] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const { selectedServiceId, setLocation } = useWeatherStore();
+  const theme = getTheme(selectedServiceId);
+  const [input, setInput] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    const result = locationSchema.safeParse(input)
+    e.preventDefault();
+    const result = locationSchema.safeParse(input);
     if (!result.success) {
-      setError(result.error.issues[0].message)
-      return
+      setError(result.error.issues[0].message);
+      return;
     }
-    setError(null)
-    setLocation(result.data)
+    setError(null);
+    setLocation(result.data);
   }
 
   function handleChange(value: string) {
-    setInput(value)
+    setInput(value);
     if (error) {
-      const result = locationSchema.safeParse(value)
-      if (result.success) setError(null)
+      const result = locationSchema.safeParse(value);
+      if (result.success) setError(null);
     }
   }
 
@@ -52,5 +52,5 @@ export function LocationInput() {
         </p>
       )}
     </form>
-  )
+  );
 }
