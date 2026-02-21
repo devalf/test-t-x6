@@ -3,7 +3,7 @@ import { act } from 'react'
 import { render, screen } from '@testing-library/react'
 import { WeatherCard, WeatherCardSkeleton } from '../../components/WeatherCard'
 import { useWeatherStore } from '../../store/weatherStore'
-import type { WeatherData } from '../../api/types'
+import type { WeatherData } from '../../types/types'
 
 const mockWeather: WeatherData = {
   location: 'London',

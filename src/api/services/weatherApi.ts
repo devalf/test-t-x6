@@ -1,4 +1,4 @@
-import type { WeatherData } from '../types'
+import type { WeatherData } from '../../types/types'
 import type { WeatherService } from '../weatherService'
 
 interface WeatherApiResponse {

@@ -1,19 +1,15 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { LocationInput } from './LocationInput'
-import { ServiceToggle } from './ServiceToggle'
-import { WeatherCard, WeatherCardSkeleton } from './WeatherCard'
-import { ErrorDisplay } from './ErrorDisplay'
-import { useWeather } from '../hooks/useWeather'
-import { useWeatherStore } from '../store/weatherStore'
-import { getTheme } from '../theme/serviceThemes'
+import { useWeatherStore } from '../store/weatherStore.ts';
+import { getTheme } from '../theme/serviceThemes.ts';
+import { useWeather } from '../hooks/useWeather.ts';
+import { ServiceToggle } from './ServiceToggle.tsx';
+import { LocationInput } from './LocationInput.tsx';
+import { WeatherCard, WeatherCardSkeleton } from './WeatherCard.tsx';
+import { ErrorDisplay } from './ErrorDisplay.tsx';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { retry: 1 },
-  },
-})
 
-function WeatherContent() {
+
+
+export default function WeatherContent() {
   const { selectedServiceId, location } = useWeatherStore()
   const theme = getTheme(selectedServiceId)
   const { data, error, isLoading, isFetching, refetch } = useWeather()
@@ -44,14 +40,5 @@ function WeatherContent() {
         )}
       </div>
     </div>
-  )
-}
-
-export default function
-  App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <WeatherContent />
-    </QueryClientProvider>
   )
 }

@@ -1,4 +1,4 @@
-import type { WeatherData, ServiceConfig } from './types'
+import type { WeatherData, ServiceConfig } from '../types/types'
 
 export interface WeatherService {
   config: ServiceConfig

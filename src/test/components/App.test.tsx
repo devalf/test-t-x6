@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import App from '../../components/App'
 import { registerService, clearServices } from '../../api/registry'
 import { openMeteoService } from '../../api/services/openMeteo'
 import { weatherApiService } from '../../api/services/weatherApi'
 import { useWeatherStore } from '../../store/weatherStore'
+import App from '../../App.tsx';
 
 describe('App Integration', () => {
   beforeEach(() => {

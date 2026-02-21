@@ -1,4 +1,4 @@
-import type { WeatherData } from '../api/types'
+import type { WeatherData } from '../types/types'
 import { useWeatherStore } from '../store/weatherStore'
 import { getTheme } from '../theme/serviceThemes'
 

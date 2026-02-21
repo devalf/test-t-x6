@@ -1,6 +1,8 @@
-# Weather App
+# Weather App (Technical Assignment)
 
-A multi-provider weather application built with a modular, strategy-based architecture. Users can look up current weather by location and seamlessly switch between providers.
+A multi-provider weather application built with a modular, strategy-based architecture. 
+Users can look up current weather by location and seamlessly switch between providers.
+This is a demo app built with a minimalist approach, using modern AI coding tools.
 
 ## Requirements
 
@@ -12,7 +14,7 @@ A multi-provider weather application built with a modular, strategy-based archit
 
 ## Tech Stack
 
-React, TailwindCSS, TanStack Query, Zustand
+React, TailwindCSS, TanStack Query, Zustand, Zod, Vite, Vitest
 
 ## Getting Started
 

@@ -1,10 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './components/App'
-import { registerService } from './api/registry'
-import { openMeteoService } from './api/services/openMeteo'
-import { weatherApiService } from './api/services/weatherApi'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+import { registerService } from './api/registry';
+import { openMeteoService } from './api/services/openMeteo';
+import { weatherApiService } from './api/services/weatherApi';
+
+import App from './App.tsx';
+
+import './index.css';
 
 registerService(openMeteoService)
 registerService(weatherApiService)
