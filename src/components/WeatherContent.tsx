@@ -22,7 +22,9 @@ export default function WeatherContent() {
         {isLoading && location && <WeatherCardSkeleton />}
         {error && !isLoading && <ErrorDisplay message={error.message} onRetry={() => refetch()} />}
         {data && !isLoading && (
-          <div className={isFetching ? 'opacity-60 transition-opacity' : 'transition-opacity'}>
+          <div
+            className={['transition-opacity', 'w-full', isFetching ? 'opacity-60' : ''].join(' ')}
+          >
             <WeatherCard data={data} />
           </div>
         )}
