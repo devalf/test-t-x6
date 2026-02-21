@@ -20,20 +20,22 @@ export const mockOpenMeteoWeatherResponse = {
   },
 };
 
-export const mockWeatherApiResponse = {
-  location: {
-    name: 'London',
-  },
-  current: {
-    temp_c: 16.0,
-    feelslike_c: 14.8,
-    humidity: 70,
-    condition: {
-      text: 'Partly cloudy',
-      icon: '//cdn.weatherapi.com/weather/64x64/day/116.png',
+export const mockWttrInResponse = {
+  current_condition: [
+    {
+      temp_C: '16',
+      FeelsLikeC: '14.8',
+      humidity: '70',
+      weatherDesc: [{ value: 'Partly cloudy' }],
+      weatherCode: '116',
+      windspeedKmph: '12',
     },
-    wind_kph: 12.0,
-  },
+  ],
+  nearest_area: [
+    {
+      areaName: [{ value: 'London' }],
+    },
+  ],
 };
 
 export const handlers = [
@@ -50,15 +52,10 @@ export const handlers = [
     return HttpResponse.json(mockOpenMeteoWeatherResponse);
   }),
 
-  http.get('https://api.weatherapi.com/v1/current.json', ({ request }) => {
-    const url = new URL(request.url);
-    const q = url.searchParams.get('q');
-    if (q === 'InvalidCity999') {
-      return HttpResponse.json(
-        { error: { code: 1006, message: 'No matching location found.' } },
-        { status: 400 },
-      );
+  http.get('https://wttr.in/:location', ({ params }) => {
+    if (params['location'] === 'InvalidCity999') {
+      return new HttpResponse('Unknown location', { status: 404 });
     }
-    return HttpResponse.json(mockWeatherApiResponse);
+    return HttpResponse.json(mockWttrInResponse);
   }),
 ];

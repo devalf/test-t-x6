@@ -18,12 +18,7 @@ React, TailwindCSS, TanStack Query, Zustand, Zod, Vite, Vitest
 
 ## Getting Started
 
-1. Copy the example environment file and add your WeatherAPI key:
-   ```sh
-   cp .env.example .env
-   ```
-2. Open `.env` and set `VITE_WEATHERAPI_API_KEY` to your key (Open-Meteo requires no key)
-3. Install dependencies and start the dev server:
+1. Install dependencies and start the dev server:
    ```sh
    npm install
    npm run dev

@@ -19,7 +19,7 @@ describe('Open-Meteo Service', () => {
       feelsLike: 14.2,
       humidity: 72,
       description: 'Partly cloudy',
-      icon: expect.stringContaining('data:image/svg+xml'),
+      icon: '⛅',
       windSpeed: 12.6,
       provider: 'Open-Meteo',
     });

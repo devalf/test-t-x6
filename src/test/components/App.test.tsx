@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { registerService, clearServices } from '../../api/registry';
 import { openMeteoService } from '../../api/services/openMeteo';
-import { weatherApiService } from '../../api/services/weatherApi';
+import { wttrInService } from '../../api/services/wttrIn';
 import { useWeatherStore } from '../../store/weatherStore';
 import App from '../../App.tsx';
 
@@ -11,7 +11,7 @@ describe('App Integration', () => {
   beforeEach(() => {
     clearServices();
     registerService(openMeteoService);
-    registerService(weatherApiService);
+    registerService(wttrInService);
     useWeatherStore.setState({
       selectedServiceId: 'openmeteo',
       location: '',
@@ -23,7 +23,7 @@ describe('App Integration', () => {
     expect(screen.getByText('Weather App')).toBeInTheDocument();
     expect(screen.getByLabelText('Location')).toBeInTheDocument();
     expect(screen.getByText('Open-Meteo')).toBeInTheDocument();
-    expect(screen.getByText('WeatherAPI')).toBeInTheDocument();
+    expect(screen.getByText('WTTR')).toBeInTheDocument();
   });
 
   it('searches for weather and displays results', async () => {
@@ -52,11 +52,11 @@ describe('App Integration', () => {
       expect(screen.getByText('Powered by Open-Meteo')).toBeInTheDocument();
     });
 
-    // Toggle to WeatherAPI
-    await user.click(screen.getByText('WeatherAPI'));
+    // Toggle to wttr.in
+    await user.click(screen.getByText('WTTR'));
 
     await waitFor(() => {
-      expect(screen.getByText('Powered by WeatherAPI')).toBeInTheDocument();
+      expect(screen.getByText('Powered by wttr.in')).toBeInTheDocument();
     });
   });
 

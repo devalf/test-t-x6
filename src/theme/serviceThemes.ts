@@ -18,14 +18,14 @@ export const serviceThemes: Record<string, ServiceTheme> = {
     buttonActive: 'bg-emerald-600 ring-2 ring-emerald-400',
     label: 'Powered by Open-Meteo',
   },
-  weatherapi: {
-    bg: 'bg-sky-50',
-    cardBg: 'bg-sky-100',
-    accent: 'text-sky-600',
-    border: 'border-sky-300',
-    button: 'bg-sky-500 hover:bg-sky-600 text-white',
-    buttonActive: 'bg-sky-600 ring-2 ring-sky-400',
-    label: 'Powered by WeatherAPI',
+  wttrin: {
+    bg: 'bg-amber-50',
+    cardBg: 'bg-amber-100',
+    accent: 'text-amber-600',
+    border: 'border-amber-300',
+    button: 'bg-amber-500 hover:bg-amber-600 text-white',
+    buttonActive: 'bg-amber-600 ring-2 ring-amber-400',
+    label: 'Powered by wttr.in',
   },
 };
 

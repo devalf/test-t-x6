@@ -16,7 +16,9 @@ export function WeatherCard({ data }: WeatherCardProps) {
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className={`text-2xl font-bold ${theme.accent}`}>{data.location}</h2>
-        <img src={data.icon} alt={data.description} className="w-16 h-16" />
+        <span className="text-5xl" role="img" aria-label={data.description}>
+          {data.icon}
+        </span>
       </div>
 
       <p className="text-4xl font-bold text-gray-900 mb-1">{data.temperature}°C</p>

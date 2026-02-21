@@ -3,14 +3,14 @@ import { createRoot } from 'react-dom/client';
 
 import { registerService } from './api/registry';
 import { openMeteoService } from './api/services/openMeteo';
-import { weatherApiService } from './api/services/weatherApi';
+import { wttrInService } from './api/services/wttrIn';
 
 import App from './App.tsx';
 
 import './index.css';
 
 registerService(openMeteoService);
-registerService(weatherApiService);
+registerService(wttrInService);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

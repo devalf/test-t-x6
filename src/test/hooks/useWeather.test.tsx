@@ -6,7 +6,7 @@ import { useWeather } from '../../hooks/useWeather';
 import { useWeatherStore } from '../../store/weatherStore';
 import { registerService, clearServices } from '../../api/registry';
 import { openMeteoService } from '../../api/services/openMeteo';
-import { weatherApiService } from '../../api/services/weatherApi';
+import { wttrInService } from '../../api/services/wttrIn';
 
 function createWrapper() {
   const queryClient = new QueryClient({
@@ -23,7 +23,7 @@ describe('useWeather', () => {
   beforeEach(() => {
     clearServices();
     registerService(openMeteoService);
-    registerService(weatherApiService);
+    registerService(wttrInService);
     useWeatherStore.setState({
       selectedServiceId: 'openmeteo',
       location: '',
@@ -55,7 +55,7 @@ describe('useWeather', () => {
   it('fetches from different service when toggled', async () => {
     useWeatherStore.setState({
       location: 'London',
-      selectedServiceId: 'weatherapi',
+      selectedServiceId: 'wttrin',
     });
 
     const { result } = renderHook(() => useWeather(), {
@@ -64,7 +64,7 @@ describe('useWeather', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data?.provider).toBe('WeatherAPI');
+    expect(result.current.data?.provider).toBe('wttr.in');
   });
 
   it('returns error for invalid city', async () => {

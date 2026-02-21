@@ -11,7 +11,7 @@ const mockWeather: WeatherData = {
   feelsLike: 14.2,
   humidity: 72,
   description: 'Partly cloudy',
-  icon: 'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3C%2Fsvg%3E',
+  icon: '⛅',
   windSpeed: 12.6,
   provider: 'Open-Meteo',
 };
@@ -34,8 +34,9 @@ describe('WeatherCard', () => {
 
   it('renders weather icon', () => {
     render(<WeatherCard data={mockWeather} />);
-    const img = screen.getByAltText('Partly cloudy');
-    expect(img).toHaveAttribute('src', mockWeather.icon);
+    const icon = screen.getByRole('img', { name: 'Partly cloudy' });
+    expect(icon).toBeInTheDocument();
+    expect(icon.textContent).toContain('⛅');
   });
 
   it('shows attribution label', () => {
@@ -47,11 +48,11 @@ describe('WeatherCard', () => {
     const { rerender } = render(<WeatherCard data={mockWeather} />);
 
     act(() => {
-      useWeatherStore.setState({ selectedServiceId: 'weatherapi' });
+      useWeatherStore.setState({ selectedServiceId: 'wttrin' });
     });
     rerender(<WeatherCard data={mockWeather} />);
 
-    expect(screen.getByText('Powered by WeatherAPI')).toBeInTheDocument();
+    expect(screen.getByText('Powered by wttr.in')).toBeInTheDocument();
   });
 });
 
